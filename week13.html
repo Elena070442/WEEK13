@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="style/week13.js"></script>
+    <title>День рождения</title>
+</head>
+<body>
+    <main>
+        <h1>Дни до дня рождения</h1>
+        <label for="bday">Введите дату вашего рождения:</label><br>
+
+        <input type="date" id="bday" name="bday"  min="2025-01-01" max="2025-12-31" />
+<button onclick="calculateDaysPassed()">Посчитать</button>
+<p id="result"></p>
+
+<script>
+    const bday=document.querySelector('#bday');
+    const resultInout=document.querySelector('#result');
+
+    function calculateDaysPassed(){
+        const messageDateStr=bday.value;
+        console.log(messageDateStr);
+
+        const messageTimestamp=Date.parse(messageDateStr);
+        console.log(messageTimestamp);
+
+        const currentTimestamp=Date.now();
+
+        const timeDifference=messageTimestamp-currentTimestamp;
+        //console.log(timeDifference);
+
+        const daysPassed=Math.floor(timeDifference/(1000 * 60 * 60 * 24));
+        console.log(daysPassed);
+
+        resultInout.textContent=`Осталось ${daysPassed} дней`;
+    }
+</script>
+    </main>
+    
+</body>
+</html>

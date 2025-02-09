@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="style/INDEX.JS"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let date = new Date ("2017-01-26");
+console.log(date);
+    </script>
+    <script>
+        // текущая дата
+let date1 = new Date();
+
+// час в вашем текущем часовом поясе
+console.log(date1.getHours());
+
+// час в часовом поясе UTC+0 (лондонское время без перехода на летнее время)
+console.log(date1.getUTCHours());
+    </script>
+    <script>
+        const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const poemYear = 1820;
+const yearsPassed = currentYear - poemYear;
+
+console.log(`С момента написания стихотворения "У лукоморья дуб зеленый" прошло ${yearsPassed} года(лет).`);
+//С момента написания стихотворения "У лукоморья дуб зеленый" прошло 203 года(лет).
+    </script>
+<p id="result"></p>
+<script>
+    //Предположим, у вас есть элемент <p> с id="result"
+const resultElement = document.getElementById('result'); 
+
+resultElement.textContent = `С момента написания стихотворения "У лукоморья дуб зеленый" прошло ${yearsPassed} года(лет).`;
+</script>
+
+<script>
+    const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+console.log(animals.slice(2));
+// Expected output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4));
+// Expected output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5));
+// Expected output: Array ["bison", "camel", "duck", "elephant"]
+
+console.log(animals.slice(-2));
+// Expected output: Array ["duck", "elephant"]
+
+console.log(animals.slice(2, -1));
+// Expected output: Array ["camel", "duck"]
+
+console.log(animals.slice());
+// Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
+
+    </script>
+    <script>
+        let date2 = new Date();
+alert(+date2); // количество миллисекунд, то же самое, что date.getTime()
+    </script>
+    <script>
+        let ms = Date.parse('2012-01-26T13:51:50.417-07:00');
+
+alert(ms); // 1327611110417 (таймстамп)
+// Можно тут же создать объект new Date из таймстампа:
+
+let date3 = new Date( Date.parse('2012-01-26T13:51:50.417-07:00') );
+
+alert(date3);
+    </script>
+    <script>
+        let date4 = new Date();
+console.log(+date4); //количество миллисекунд, то же самое, что date.getTime()
+function calculateAge(birthDate) {
+  let currentDate = new Date();
+  let diffInMilliseconds = currentDate - birthDate;
+
+  // Конвертируем разницу в миллисекундах в годы
+  let ageDate = new Date(diffInMilliseconds);
+  let age = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+return age;
+}
+
+let birthDate = new Date('1982-04-07');
+let age = calculateAge(birthDate);
+console.log("Возраст: " + age + " лет");
+    </script>
+    <script>
+        const currentDate7 = new Date()
+const pastDate = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)
+// Вычисляем разницу в днях
+const timeDifference = currentDate7.getTime() - pastDate.getTime()
+const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24))
+console.log(`Разница в днях: ${daysDifference}`)
+    </script>
+</body>

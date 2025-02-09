@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="style/week13.js"></script>
+    <title>Дни до дня рождения</title>
+    <style>
+        #errorMessage {
+            color: red;
+            display: none; 
+        }
+        .bday_1{
+            text-align: center;
+        }
+        #birthdayInput{
+            width: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body >
+    <div class="bday_1">
+    <h1>Дни до дня рождения</h1>
+    <div class="bday">
+    <div><label for="birthdayInput">Введите дату вашего рождения:</label></div>
+    <input type="date" id="birthdayInput">
+    <button id="calculateDaysPassed">Посчитать </button>
+    
+    <p id="errorMessage">Пожалуйста, введите дату рождения.</p>
+    <p id="resultMessage"></p>
+</div>
+</div>
+    <script>
+            document.getElementById('calculateDaysPassed').addEventListener('click', function() {
+            const birthdayInput = document.getElementById('birthdayInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const resultMessage = document.getElementById('resultMessage');
+
+            // Скрываем сообщение об ошибке
+            errorMessage.style.display = 'none';
+            resultMessage.textContent = ''; // Очищаем сообщение о результате
+
+            if (!birthdayInput) {
+                // Если дата не введена, показываем сообщение об ошибке
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Получаем текущую дату
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const birthday = new Date(birthdayInput);
+            // Устанавливаем год на текущий
+            birthday.setFullYear(currentYear); 
+
+            // Если день рождения уже прошел в этом году, вычисляем для следующего года
+            if (birthday < today) {
+                birthday.setFullYear(currentYear + 1);
+            }
+
+            // Вычисляем количество дней до дня рождения
+            const timeDiff = birthday - today;
+            // Переводим миллисекунды в дни; функция Math.ceil округляет число до целого; Math.abs не округляет.
+            const daysUntilBirthday = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); 
+
+
+            // Функция для склонения слова "день" ***
+            function getDaysDeclension(count) {
+            if (count % 10 === 1 && count % 100 !== 11) {
+                return 'день';
+            } else if ((count % 10 >= 2 && count % 10 <= 4) && (count % 100 < 12 || count % 100 > 14)) {
+                return 'дня';
+            } else {
+                return 'дней';
+            }
+        }
+            // Отображаем результат с правильным склонением
+            const daysDeclension = getDaysDeclension(daysUntilBirthday);
+            resultMessage.textContent = `До вашего дня рождения осталось ${daysUntilBirthday} ${daysDeclension}.`;
+        });
+
+        // Скрываем сообщение об ошибке при изменении поля ввода
+        document.getElementById('birthdayInput').addEventListener('change', function() {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+
+
