@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let grades = [99, 39, 5, 76, 71, 67, 41, 80, 4, 72, 96, 41];
+
+// Заполняем массив случайными оценками от 1 до 100 для 12 студентов
+// for (let i = 0; i < 12; i++) {
+//     let randomGrade = Math.floor(Math.random() * 100) + 1; // Генерируем случайную оценку
+//     grades.push(randomGrade); // Добавляем оценку в массив
+// }
+// Выводим массив оценок в консоль
+console.log(grades);
+
+// grades.forEach(function(number){
+//     console.log(number);
+// });
+
+const grades2=[99, 39, 5, 76, 71, 67, 41, 80, 4, 72, 96, 41];
+// const sum2= grades2.reduce(function(a, b){
+//     return a + b;
+// }, 0);
+const sum = grades2.reduce((a, b) => a + b);
+// Вычисляем среднее
+const avg = sum / grades2.length;
+console.log(`Сумма: ${sum}, Среднее: ${avg}`);
+// console.log(sum2); 
+
+//наибольшее число
+grades2.sort(function(a,b){
+    return a-b;
+})
+console.log[grades2];
+
+const maxValue = Math.max(...grades2);
+console.log(`Наибольшее число:${maxValue}`);
+
+//наименьшее число
+const maxValue2 = Math.min(...grades2);
+console.log(`Наибольшее число:${maxValue2}`);
+
+//фильтр>60
+const filteredGrades2=grades2.filter(function(grades2){
+    return grades2 >=60;
+});
+console.log(` Количество студентов, получивших положительную оценку (балл выше или равен 60):${filteredGrades2} равняется 7.`);
+
+//<60
+const filteredGrades3=grades2.filter(function(grades2){
+    return grades2 <=60;
+});
+console.log(`Количество студентов,получивших отрицательную оценку (балл ниже 60):${filteredGrades3} составляет 5.`);
+
+//
+function convertGrade(numericGrade) {
+    if (numericGrade >= 80 && numericGrade <= 100) {
+        return 'A';
+
+    } else if (numericGrade >= 60 && numericGrade <=79) {
+        return 'B';
+    } else if (numericGrade >= 40 && numericGrade <=59) {
+        return 'C';
+    } else if (numericGrade >= 20 && numericGrade <=39) {
+        return 'D';
+    } else if (numericGrade < 20) {
+        return 'E';
+    } 
+    
+}
+//Преобразование в буквенные оценки
+const letterGrades = grades.map(convertGrade);
+console.log(letterGrades); // ['A', 'B', 'C', 'D',  'E']
+
+</script>
+</body>
+</html>
