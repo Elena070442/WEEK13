@@ -1,0 +1,22 @@
+h1{
+    text-align: center;
+}
+body {
+    margin: 20px;
+}
+div {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+h2 {
+    text-align: center;
+}
+a {
+    color: blue;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
